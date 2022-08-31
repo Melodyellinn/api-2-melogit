@@ -8,6 +8,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 
 jobs:
   build:
@@ -30,13 +31,7 @@ jobs:
         run: pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
-      - name: Lint with black
-        run: |
-          black *.py
- 
-      - name: Test with pytest
-        run: pytest tests/test_fast.py
-
+      
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
@@ -65,4 +60,4 @@ jobs:
         with:
           app-name: 'api-2-melogit'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6D4DB2F6DF934CF6885F4DDFB14C682C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DE305A8875054FD3ACAD3151D4DCA8D0 }}
